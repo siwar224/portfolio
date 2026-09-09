@@ -1,0 +1,7 @@
+dist/
+tmp/
+
+# Local demo videos are hosted through Cloudinary or compressed web links.
+assets/youdube/demo-v5.mp4
+assets/youdube/demo-v5-web.mp4
+assets/elearning/landing-page-demo.mp4
