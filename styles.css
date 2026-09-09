@@ -348,7 +348,30 @@ h1 {
   align-items: stretch;
 }
 
-.about-grid > p {
+.about-profile {
+  display: grid;
+  grid-template-columns: 142px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  padding: 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(16, 24, 39, 0.05);
+}
+
+.about-profile img {
+  display: block;
+  width: 142px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 12px 30px rgba(16, 24, 39, 0.14);
+}
+
+.about-profile p {
   margin: 0;
   color: var(--muted);
   font-size: 1.05rem;
@@ -991,6 +1014,10 @@ body.dark .contact-icon {
   background: #17221f;
 }
 
+body.dark .about-profile img {
+  border-color: #17221f;
+}
+
 body.dark .projects-hero {
   background: linear-gradient(100deg, #0c1110 0%, #0c1110 52%, #10241d 100%);
 }
@@ -1142,6 +1169,14 @@ body.dark .stack-panel {
   .experience-section,
   .education-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .about-profile img {
+    width: 132px;
   }
 
   .stats {
