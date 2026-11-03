@@ -1,281 +1,282 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Siwar M'SALLEM - Full Stack Software Engineer building scalable web applications, AI-powered features, and reliable DevOps workflows."
-    />
-    <title>Siwar M'SALLEM | Full Stack Software Engineer</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="#home" aria-label="Siwar M'SALLEM home">
-        <span>S</span><span>M</span>
-      </a>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Siwar M'SALLEM - Software Engineer building secure web and mobile products, with a DevOps edge: CI/CD, Docker and monitoring." />
+<title>Siwar M'SALLEM | Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css" />
+<link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="#home" aria-label="Siwar M'SALLEM home">SM</a>
+    <div class="nav-links">
+      <a href="#home" class="active">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    </div>
+    <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle light mode">
+      <svg class="i" viewBox="0 0 24 24"><path d="M12 4V2m0 20v-2m8-8h2M2 12h2m14.36-6.36 1.42-1.42M4.22 19.78l1.42-1.42m12.72 0 1.42 1.42M4.22 4.22l1.42 1.42" /><circle cx="12" cy="12" r="4" /></svg>
+    </button>
+    <a class="btn primary pill magnetic" href="mailto:siwarmsellem@gmail.com">Contact Me</a>
+  </nav>
 
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <button class="icon-button" type="button" id="themeToggle" aria-label="Toggle dark mode">
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M12 4V2m0 20v-2m8-8h2M2 12h2m14.36-6.36 1.42-1.42M4.22 19.78l1.42-1.42m12.72 0 1.42 1.42M4.22 4.22l1.42 1.42" />
-            <circle cx="12" cy="12" r="4" />
-          </svg>
-        </button>
-        <a class="button primary small" href="mailto:siwarmsellem@gmail.com">Contact Me</a>
-      </div>
-    </header>
-
-    <main id="home">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Build <span></span> Automate <span></span> Scale</p>
-          <h1 id="hero-title">Siwar M'SALLEM</h1>
-          <p class="role">Full Stack Software Engineer</p>
-          <p class="hero-summary">Scalable full-stack applications with AI and DevOps</p>
-
-          <div class="hero-points" aria-label="Core strengths">
-            <div>
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 9-4 3 4 3m8-6 4 3-4 3M14 4l-4 16" /></svg>
-              <span>Build<br />real solutions</span>
-            </div>
-            <div>
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2v3m0 14v3m7.07-17.07-2.12 2.12M7.05 16.95l-2.12 2.12M22 12h-3M5 12H2m17.07 7.07-2.12-2.12M7.05 7.05 4.93 4.93" /><circle cx="12" cy="12" r="4" /></svg>
-              <span>Automate<br />repetitive work</span>
-            </div>
-            <div>
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 20V10m7 10V4m7 16v-7" /></svg>
-              <span>Turn ideas<br />into impact</span>
-            </div>
-          </div>
-
-          <div class="hero-actions">
-            <a class="button primary" href="#contact">
-              Contact Me
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
-            </a>
-            <a class="button secondary" href="#projects">View My Work</a>
-          </div>
-        </div>
-
-        <div class="hero-image" aria-label="Developer workspace">
-          <img src="assets/hero-workspace.png" alt="Bright professional developer workspace with a laptop, notebook, books, and plants" />
-        </div>
-      </section>
-
-      <section class="section about-section" id="about" aria-labelledby="about-title">
-        <div class="section-heading">
-          <h2 id="about-title">About</h2>
-          <span></span>
-        </div>
-        <div class="about-grid">
-          <div class="about-profile">
-            <img src="assets/siwar-profile.png" alt="Professional portrait of Siwar M'SALLEM" />
-            <p>
-              I am a Full Stack Software Engineer focused on building reliable web applications with React, Node.js,
-              TypeScript, Express.js, MongoDB, and modern DevOps workflows. My work combines clean architecture,
-              responsive interfaces, RESTful APIs, AI-powered services, and deployment automation.
-            </p>
-          </div>
-          <div class="stats" aria-label="Profile highlights">
-            <div><strong>4</strong><span>professional experiences</span></div>
-            <div><strong>5+</strong><span>featured projects</span></div>
-            <div><strong>2026</strong><span>engineering degree earned</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="projects" aria-labelledby="projects-title">
-        <div class="section-heading inline-heading">
+  <main id="home">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="fluid" aria-hidden="true"></canvas>
+      <div class="scroll-hint" aria-hidden="true">SCROLL</div>
+      <div class="hero-content">
+        <p class="eyebrow h-in">Build <i></i> Automate <i></i> Scale</p>
+        <h1 id="hero-title">Siwar M'SALLEM</h1>
+        <div class="hero-row">
           <div>
-            <h2 id="projects-title">Featured Projects</h2>
-            <span></span>
+            <p class="role h-in">Software <em>Engineer</em></p>
+            <p class="summary h-in">I build <b>secure web and mobile products</b> end to end, from React and React Native interfaces to Fastify APIs,
+              payments and AI features. <b>And I automate how they ship.</b></p>
+            <div class="actions h-in">
+              <span class="star"><a class="btn primary magnetic" href="#contact">Contact Me
+                <svg class="i arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></span>
+              <a class="btn ghost magnetic" href="#projects">View My Work</a>
+            </div>
+            <div class="points h-in" aria-label="Core strengths">
+              <div><svg class="i" viewBox="0 0 24 24"><path d="m8 9-4 3 4 3m8-6 4 3-4 3M14 4l-4 16" /></svg><span>Build real solutions</span></div>
+              <div><svg class="i" viewBox="0 0 24 24"><path d="M12 2v3m0 14v3m7.07-17.07-2.12 2.12M7.05 16.95l-2.12 2.12M22 12h-3M5 12H2m17.07 7.07-2.12-2.12M7.05 7.05 4.93 4.93" /><circle cx="12" cy="12" r="4" /></svg><span>Automate repetitive work</span></div>
+              <div><svg class="i" viewBox="0 0 24 24"><path d="M5 20V10m7 10V4m7 16v-7" /></svg><span>Turn ideas into impact</span></div>
+            </div>
           </div>
-          <a href="all-projects.html">View all projects</a>
-        </div>
 
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-preview screenshot-preview">
-              <img src="assets/elearning/landing-page.png" alt="Zad Ezzaytouni e-learning platform landing page preview" />
+          <!-- Visual built from the skills: a real-looking payment webhook + the CI pipeline that ships it -->
+          <div class="stack h-in" id="stack" aria-hidden="true">
+            <div class="win">
+              <div class="win-bar"><i></i><i></i><i></i><span>payments/webhook.ts</span><small>Fastify · TypeScript</small></div>
+<pre class="code" id="code"><span class="ln"><span class="n">1</span><span class="c">// Tap · Tamara · Tabby — one safe flow</span></span><span class="ln"><span class="n">2</span>app.<span class="f">post</span>(<span class="s">'/payments/webhook'</span>, <span class="k">async</span> (req, reply) =&gt; {</span><span class="ln"><span class="n">3</span>  <span class="f">verifySignature</span>(req)</span><span class="ln"><span class="n">4</span>  <span class="k">const</span> event = PaymentEvent.<span class="f">parse</span>(req.body)</span><span class="ln"><span class="n">5</span>  <span class="k">if</span> (<span class="k">await</span> <span class="f">alreadyHandled</span>(event.id)) <span class="k">return</span> reply.<span class="f">send</span>()</span><span class="ln"><span class="n">6</span>  <span class="k">await</span> <span class="f">capture</span>(event.chargeId, { idempotencyKey: event.id })</span><span class="ln"><span class="n">7</span>  <span class="k">return</span> reply.<span class="f">send</span>({ ok: <span class="k">true</span> })</span><span class="ln"><span class="n">8</span>})<span class="caret"></span></span></pre>
             </div>
-            <div class="project-body">
-              <a class="project-link" href="elearning.html" aria-label="Open e-learning platform case study">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
-              </a>
-              <h3>Zad Ezzaytouni - E-learning Platform</h3>
-              <p>Scalable MERN platform with role-based dashboards, course management, virtual classrooms, notifications, and AI assistance.</p>
-              <div class="tags"><span>React</span><span>Node.js</span><span>MongoDB</span><span>FastAPI</span></div>
-              <div class="project-actions">
-                <a href="elearning.html">View case study</a>
-                <a href="https://res.cloudinary.com/k4xsaf85/video/upload/v1788882124/landing-page-demo.mp4">Watch demo</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-preview screenshot-preview">
-              <img src="assets/youdube/landingpage.png" alt="YouDube landing page preview" />
-            </div>
-            <div class="project-body">
-              <a class="project-link" href="youdube.html" aria-label="Open YouDube case study">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
-              </a>
-              <h3>YouDube - AI Video Dubbing</h3>
-              <p>Multilingual video dubbing platform with upload, transcription, translation, voice synthesis, and final merge workflow.</p>
-              <div class="tags"><span>React</span><span>Express</span><span>Flask</span><span>Whisper</span></div>
-              <div class="project-actions">
-                <a href="youdube.html">View case study</a>
-                <a href="https://res.cloudinary.com/k4xsaf85/video/upload/v1788882426/Video_Project_2.mp4">Watch demo</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-preview preview-devops">
-              <ul>
-                <li><span></span>Build</li>
-                <li><span></span>Test</li>
-                <li><span></span>Deploy</li>
-                <li><span></span>Monitor</li>
+            <div class="win pipe">
+              <div class="win-bar"><i></i><i></i><i></i><span>ci.yml</span><small>GitHub Actions</small></div>
+              <ul class="steps" id="steps">
+                <li><span class="st"></span><b>lint &amp; typecheck</b><em>ESLint · tsc</em></li>
+                <li><span class="st"></span><b>test</b><em>Vitest</em></li>
+                <li><span class="st"></span><b>quality gate</b><em>SonarQube</em></li>
+                <li><span class="st"></span><b>docker build → GHCR</b><em>Docker</em></li>
+                <li><span class="st"></span><b>deploy &amp; monitor</b><em>Grafana</em></li>
               </ul>
             </div>
-            <div class="project-body">
-              <a class="project-link" href="https://github.com/siwar224" target="_blank" rel="noreferrer" aria-label="Open DevOps Automation Pipeline on GitHub">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
-              </a>
-              <h3>DevOps Automation Pipeline</h3>
-              <p>CI/CD pipeline automating build, testing, quality checks, artifact management, deployment, and monitoring dashboards.</p>
-              <div class="tags"><span>Spring Boot</span><span>Jenkins</span><span>Docker</span><span>Grafana</span></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="skills" aria-labelledby="skills-title">
-        <div class="section-heading inline-heading">
-          <div>
-            <h2 id="skills-title">Technical Skills</h2>
-            <span></span>
+            <div class="badge"><span>✓</span>Shipped to production</div>
           </div>
-          <p>Always learning. Always building.</p>
         </div>
+      </div>
+    </section>
 
-        <div class="skills-grid" aria-label="Technical skills">
-          <div class="skill"><strong>JS</strong><span>JavaScript</span></div>
-          <div class="skill"><strong>TS</strong><span>TypeScript</span></div>
-          <div class="skill"><strong>Re</strong><span>React</span></div>
-          <div class="skill"><strong>N</strong><span>Next.js</span></div>
-          <div class="skill"><strong>No</strong><span>Node.js</span></div>
-          <div class="skill"><strong>Py</strong><span>Python</span></div>
-          <div class="skill"><strong>SQL</strong><span>MySQL</span></div>
-          <div class="skill"><strong>DB</strong><span>MongoDB</span></div>
-          <div class="skill"><strong>Do</strong><span>Docker</span></div>
-          <div class="skill"><strong>CI</strong><span>GitHub Actions</span></div>
-          <div class="skill"><strong>AWS</strong><span>Cloud</span></div>
-          <div class="skill"><strong>Git</strong><span>Git</span></div>
-        </div>
-      </section>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">
+      <span>React</span><span>React Native</span><span>TypeScript</span><span>Node.js</span><span>Fastify</span><span>Next.js</span><span>MongoDB</span><span>FastAPI</span><span>Docker</span><span>GitHub Actions</span><span>Jenkins</span><span>Grafana</span>
+      <span>React</span><span>React Native</span><span>TypeScript</span><span>Node.js</span><span>Fastify</span><span>Next.js</span><span>MongoDB</span><span>FastAPI</span><span>Docker</span><span>GitHub Actions</span><span>Jenkins</span><span>Grafana</span>
+    </div></div>
 
-      <section class="section experience-section" id="experience" aria-labelledby="experience-title">
-        <div class="section-heading">
-          <h2 id="experience-title">Experience</h2>
-          <span></span>
-        </div>
-
-        <div class="timeline">
-          <article>
-            <time>Feb 2026 - Jul 2026</time>
-            <h3>Full Stack Software Engineer Intern - Tradrly</h3>
-            <p>Built a MERN e-learning platform with secure authentication, role-based dashboards, AI microservices, Docker, and CI/CD.</p>
-          </article>
-          <article>
-            <time>Jul 2025 - Aug 2025</time>
-            <h3>Full Stack Software Engineer Intern - Tradrly</h3>
-            <p>Developed an AI-powered video dubbing platform using React, Node.js, MongoDB, Flask, FFmpeg, Whisper, and Gemini.</p>
-          </article>
-          <article>
-            <time>Jul 2024 - Aug 2024</time>
-            <h3>Web Development Intern - Telnet</h3>
-            <p>Contributed to Pulse HR with Next.js, React, TypeScript, Material UI, Laravel, MySQL, React Query, and Redux Toolkit.</p>
-          </article>
-          <article>
-            <time>Feb 2023 - Jun 2023</time>
-            <h3>Bachelor's Final Year Project - StartNow</h3>
-            <p>Implemented full-stack features across React, Express.js, MongoDB, SQL Server, Redux, and configurable AG Grid tables.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section education-section" aria-labelledby="education-title">
-        <div class="section-heading">
-          <h2 id="education-title">Education</h2>
-          <span></span>
-        </div>
-        <div class="education-grid">
-          <article>
-            <h3>Engineering Degree in Computer Engineering</h3>
-            <p>ESPRIT - Engineering School</p>
-            <span>Graduated Sep 2026 - Web and Internet Technologies</span>
-          </article>
-          <article>
-            <h3>Bachelor's Degree in Computer Science</h3>
-            <p>ISIMM - Monastir</p>
-            <span>2020 - 2023 - Software Engineering and Information Systems</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="contact-band" id="contact" aria-labelledby="contact-title">
-        <div class="contact-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z" /><path d="m4 7 8 6 8-6" /></svg>
+    <!-- ABOUT -->
+    <section class="sec" id="about" aria-labelledby="about-title">
+      <div class="sec-head"><h2 id="about-title" class="split">About</h2><span class="idx" aria-hidden="true">(01)</span></div>
+      <div class="about">
+        <div class="rv">
+          <div class="portrait"><img src="assets/siwar-profile.png" alt="Professional portrait of Siwar M'SALLEM" /></div>
+          <div class="loc">
+            <span><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z" /><circle cx="12" cy="10" r="2.5" /></svg>Mahdia, Tunisia</span>
+            <span><svg class="i" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c3 2 9 2 12 0v-5" /></svg>Computer Engineer · ESPRIT 2026</span>
+          </div>
         </div>
         <div>
-          <h2 id="contact-title">Contact Me</h2>
-          <p>Let's build something great together.</p>
+          <p class="statement" id="statement">I'm a Software Engineer who builds secure web and mobile applications end to end. React, React Native, TypeScript, Node.js and Fastify on the surface; payment workflows, AI features and microservices underneath. My edge: I also automate how software ships, with Docker, CI/CD pipelines, code-quality gates and monitoring.</p>
+          <div class="stats" aria-label="Profile highlights">
+            <div class="rv"><strong data-count="5">5</strong><span>professional experiences</span></div>
+            <div class="rv"><strong data-count="6" data-suffix="+">6+</strong><span>projects shipped</span></div>
+            <div class="rv"><strong data-count="4">4</strong><span>payment providers integrated</span></div>
+            <div class="rv"><strong data-count="2026" data-from="2018">2026</strong><span>engineering degree earned</span></div>
+          </div>
+          <div class="langs rv" aria-label="Languages">
+            <span><b>Arabic</b> · Native</span><span><b>French</b> · Professional</span><span><b>English</b> · Professional</span><span><b>Italian</b> · A2</span>
+          </div>
         </div>
-        <ul class="contact-meta">
-          <li>
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" /></svg>
-            Open to opportunities
-          </li>
-          <li>
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z" /><circle cx="12" cy="10" r="2" /></svg>
-            Remote friendly
-          </li>
-          <li>
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg>
-            Available for work
-          </li>
-        </ul>
-        <div class="contact-actions">
-          <a class="button primary" href="mailto:siwarmsellem@gmail.com">
-            Contact Me
-            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
-          </a>
-          <a class="button ghost" href="assets/siwar-msallem-cv.pdf" download>Download CV</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>Siwar M'SALLEM</p>
-      <div>
-        <a href="mailto:siwarmsellem@gmail.com">Email</a>
-        <a href="https://linkedin.com/in/siwarmsellem" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://github.com/siwar224" target="_blank" rel="noreferrer">GitHub</a>
       </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- PROJECTS -->
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <div class="sec-head">
+        <div>
+          <h2 id="projects-title" class="split">Featured <em>Projects</em></h2>
+          <p style="margin-top:18px">A selection of products I've built end to end, from interface to API to pipeline.</p>
+        </div>
+        <a class="view-all magnetic" href="all-projects.html">View all projects <svg class="i" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+      </div>
+      <div class="h-track" id="hTrack">
+        <article class="proj">
+          <div class="proj-media"><img src="assets/khedma/landing-page.png" alt="Khedma service marketplace landing page" /><span class="cat">Web + Mobile</span></div>
+          <div class="proj-body">
+            <div class="proj-top"><h3>Khedma - Service Marketplace Platform</h3><a class="go" href="khedma.html" aria-label="Open Khedma case study"><svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg></a></div>
+            <p>React web and React Native/Expo apps on a modular Fastify API. JWT with refresh tokens, email OTP, MongoDB transactions that prevent double assignments, real-time Socket.IO notifications and secure Stream Chat messaging.</p>
+            <div class="tags"><span>React Native</span><span>Fastify</span><span>MongoDB</span><span>Socket.IO</span><span>GHCR</span></div>
+            <div class="proj-actions"><a href="khedma.html">View case study</a></div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-media"><img src="assets/elearning/landing-page.png" alt="Zad Ezzaytouni e-learning platform landing page" /><span class="cat">Full product · AI</span></div>
+          <div class="proj-body">
+            <div class="proj-top"><h3>Zad Ezzaytouni - E-learning Platform</h3><a class="go" href="elearning.html" aria-label="Open e-learning case study"><svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg></a></div>
+            <p>Engineering final-year project: student, teacher and admin dashboards, virtual classrooms, and FastAPI AI microservices for quiz generation, lesson assistance and semantic search. Dockerized and shipped with GitHub Actions.</p>
+            <div class="tags"><span>React</span><span>Node.js</span><span>MongoDB</span><span>FastAPI</span><span>Docker</span></div>
+            <div class="proj-actions"><a href="elearning.html">View case study</a><a href="https://res.cloudinary.com/k4xsaf85/video/upload/v1788882124/landing-page-demo.mp4">Watch demo</a></div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-media"><img src="assets/youdube/landingpage.png" alt="YouDube AI video dubbing landing page" /><span class="cat">AI</span></div>
+          <div class="proj-body">
+            <div class="proj-top"><h3>YouDube - AI Video Dubbing</h3><a class="go" href="youdube.html" aria-label="Open YouDube case study"><svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg></a></div>
+            <p>Automated multilingual video localization: upload, Whisper transcription, Gemini translation, voice synthesis and FFmpeg merge, behind JWT-secured APIs and LTR/RTL interfaces.</p>
+            <div class="tags"><span>React</span><span>Express</span><span>Flask</span><span>Whisper</span><span>Gemini</span></div>
+            <div class="proj-actions"><a href="youdube.html">View case study</a><a href="https://res.cloudinary.com/k4xsaf85/video/upload/v1788882426/Video_Project_2.mp4">Watch demo</a></div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-media"><img src="assets/specora/specora-traceability.png" alt="Specora AI showing traceable requirements, user stories and acceptance criteria" /><span class="cat">AI · Product</span></div>
+          <div class="proj-body">
+            <div class="proj-top"><h3>Specora AI - Idea to Software Specification</h3><a class="go" href="https://github.com/siwar224/Specora-AI" target="_blank" rel="noreferrer" aria-label="Specora AI on GitHub"><svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg></a></div>
+            <p>Local-first assistant that turns a rough product idea (typed or spoken) into a reviewable spec: requirements, user stories and acceptance criteria with traceable IDs, validated by the app rather than trusted blindly from the LLM. Exports to HTML/PDF.</p>
+            <div class="tags"><span>Python</span><span>FastAPI</span><span>OpenAI / local LLM</span><span>Speech-to-text</span></div>
+            <div class="proj-actions"><a href="https://github.com/siwar224/Specora-AI" target="_blank" rel="noreferrer">Source code</a></div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-media art term" style="--hue:var(--accent-3)"><span class="cat">AI · Developer tool</span>
+<pre>$ python -m ai_detective analyze mongodb.log
+<b>✓</b> parse      text · JSON · NDJSON
+<b>✓</b> facts      stats · error groups · timeline
+<i>?</i> hypotheses bounded Groq investigation
+<i>?</i> evidence   linked to source line numbers
+<b>→</b> report     Markdown · JSON</pre>
+          </div>
+          <div class="proj-body">
+            <div class="proj-top"><h3>AI Detective CLI - Incident Investigation</h3><a class="go" href="https://github.com/siwar224/AI_detective-cli" target="_blank" rel="noreferrer" aria-label="AI Detective CLI on GitHub"><svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg></a></div>
+            <p>Turns application logs into evidence-based diagnostic reports. Deterministic parsing and statistics stay the source of truth; a bounded Groq agent with read-only tools proposes causes, separating facts from hypotheses. Optional FastAPI live gateway.</p>
+            <div class="tags"><span>Python</span><span>FastAPI</span><span>Groq tool-calling</span><span>pytest</span></div>
+            <div class="proj-actions"><a href="https://github.com/siwar224/AI_detective-cli" target="_blank" rel="noreferrer">Source code</a></div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-media art"><span class="cat">DevOps</span>
+            <ul><li>Build</li><li>Test</li><li>Quality</li><li>Deploy</li><li>Monitor</li></ul>
+            <div class="flow"><b>Jenkins</b><i>→</i><b>SonarQube</b><i>→</i><b>Nexus</b><i>→</i><b>Docker</b><i>→</i><b>Grafana</b></div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-top"><h3>DevOps Automation Pipeline</h3><a class="go" href="https://github.com/siwar224" target="_blank" rel="noreferrer" aria-label="DevOps pipeline on GitHub"><svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg></a></div>
+            <p>Jenkins CI/CD for a Spring Boot app: JUnit and Mockito tests, SonarQube quality gates, Nexus artifacts, Docker deployment, and Prometheus/Grafana dashboards on Linux.</p>
+            <div class="tags"><span>Spring Boot</span><span>Jenkins</span><span>SonarQube</span><span>Nexus</span><span>Docker</span></div>
+            <div class="proj-actions"><a href="https://github.com/siwar224" target="_blank" rel="noreferrer">Source code</a></div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-media"><img src="assets/cimaseats/seat-selection.png" alt="CiMaSeat interactive seat selection" /><span class="cat">Python</span></div>
+          <div class="proj-body">
+            <div class="proj-top"><h3>CiMaSeat - Cinema Booking</h3><a class="go" href="https://github.com/siwar224/CimaSeats" target="_blank" rel="noreferrer" aria-label="CiMaSeat on GitHub"><svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg></a></div>
+            <p>Booking app with an interactive seat map, atomic rejection of occupied seats, reservation lookup and cancellation. One service layer shared by a CLI and a Streamlit UI, covered by unit tests.</p>
+            <div class="tags"><span>Python</span><span>Streamlit</span><span>OOP</span><span>unittest</span></div>
+            <div class="proj-actions"><a href="https://cimaseats-pro.streamlit.app/" target="_blank" rel="noreferrer">Live demo</a><a href="https://github.com/siwar224/CimaSeats" target="_blank" rel="noreferrer">Source code</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="sec" id="skills" aria-labelledby="skills-title">
+      <div class="sec-head"><h2 id="skills-title" class="split">Technical <em>Skills</em></h2><p>Always learning. Always building.</p></div>
+      <div class="skill-grid">
+        <div class="group rv"><h3>Frontend &amp; Mobile <code>01</code></h3><div class="chips"><span>React.js</span><span>React Native (Expo)</span><span>Next.js</span><span>TypeScript</span><span>Redux Toolkit</span><span>Tailwind CSS</span><span>Material UI</span><span>Vite</span></div></div>
+        <div class="group rv"><h3>Backend &amp; APIs <code>02</code></h3><div class="chips"><span>Node.js</span><span>Fastify</span><span>Express.js</span><span>REST APIs</span><span>Socket.IO</span><span>FastAPI</span><span>Flask</span><span>Laravel</span><span>Spring Boot</span></div></div>
+        <div class="group rv"><h3>Security &amp; Payments <code>03</code></h3><div class="chips"><span>JWT</span><span>RBAC</span><span>Zod</span><span>Webhooks</span><span>Tap Payments</span><span>Tamara</span><span>Tabby</span><span>Stripe</span></div></div>
+        <div class="group rv"><h3>Data &amp; Testing <code>04</code></h3><div class="chips"><span>MongoDB</span><span>Mongoose</span><span>MySQL</span><span>SQL Server</span><span>Vitest</span><span>JUnit</span><span>Mockito</span><span>Postman</span><span>Swagger</span></div></div>
+        <div class="group devops rv">
+          <span class="plus">+ DevOps edge</span>
+          <p><b>I don't stop at the code.</b> I containerize it, wire the CI/CD, add quality gates and set up monitoring, so features reach production reliably.</p>
+          <div class="chips"><span>GitHub Actions</span><span>Jenkins</span><span>Docker</span><span>Docker Compose</span><span>GHCR</span><span>Nexus</span><span>SonarQube</span><span>Prometheus</span><span>Grafana</span><span>Nginx</span><span>Linux</span></div>
+        </div>
+        <div class="group rv"><h3>Languages <code>05</code></h3><div class="chips"><span>JavaScript</span><span>TypeScript</span><span>Python</span><span>Java</span><span>SQL</span></div></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="sec" id="experience" aria-labelledby="experience-title">
+      <div class="sec-head"><h2 id="experience-title" class="split">Experience</h2><span class="idx" aria-hidden="true">(04)</span></div>
+      <div class="timeline" id="timeline">
+        <span class="prog" aria-hidden="true"></span>
+        <article class="job rv"><time>Aug 2026 – Oct 2026<small>Mahdia, Tunisia</small></time><div>
+          <h3>Software Engineer – Kochi SaaS Platform</h3><p class="co">Tradrly</p>
+          <ul>
+            <li>Built full-stack features for an <b>Arabic-first fitness coaching SaaS</b> with Fastify, TypeScript, MongoDB and React Native/Expo.</li>
+            <li>Integrated <b>Tap, Tamara, Tabby and Apple Pay</b>: checkout, verification, capture and refunds, hardened with webhook validation and idempotency safeguards.</li>
+            <li>Shipped multi-currency pricing with SAR conversion, and migrated AI features (chat, content generation, OCR) to <b>Anthropic Claude</b>.</li>
+          </ul></div></article>
+        <article class="job rv"><time>Feb 2026 – Jul 2026<small>Mahdia, Tunisia</small></time><div>
+          <h3>Software Engineer Intern – Engineering Final Year Project</h3><p class="co">Tradrly</p>
+          <ul>
+            <li>Designed a <b>MERN e-learning platform</b> with dashboards for students, teachers and administrators, secured with JWT and RBAC.</li>
+            <li>Integrated <b>FastAPI AI microservices</b> for quiz generation, lesson assistance and semantic search; shipped with Docker Compose and GitHub Actions.</li>
+          </ul></div></article>
+        <article class="job rv"><time>Jul 2025 – Aug 2025<small>Mahdia, Tunisia</small></time><div>
+          <h3>Software Engineer Intern</h3><p class="co">Tradrly</p>
+          <ul>
+            <li>Developed an <b>AI video dubbing platform</b> (React, Express, MongoDB) with Flask services running Whisper, Gemini and FFmpeg.</li>
+            <li>Built multilingual LTR/RTL interfaces and asynchronous communication between the API and AI processing services.</li>
+          </ul></div></article>
+        <article class="job rv"><time>Jul 2024 – Aug 2024<small>Tunis, Tunisia</small></time><div>
+          <h3>Web Development Intern</h3><p class="co">Telnet</p>
+          <ul>
+            <li>Contributed to <b>Pulse HR</b>, an enterprise HR platform, with Next.js, React, TypeScript and Material UI.</li>
+            <li>Built Laravel/MySQL APIs for employee and recruitment workflows; state with Redux Toolkit and React Query.</li>
+          </ul></div></article>
+        <article class="job rv"><time>Feb 2023 – Jun 2023<small>Tunis, Tunisia</small></time><div>
+          <h3>Bachelor's Final Year Project</h3><p class="co">StartNow</p>
+          <ul>
+            <li>Built reusable React components and configurable <b>AG Grid</b> tables with advanced filtering and data visualization.</li>
+            <li>Developed Express.js APIs on MongoDB and SQL Server in an Agile team.</li>
+          </ul></div></article>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="sec" aria-labelledby="education-title" style="padding-top:40px">
+      <div class="sec-head"><h2 id="education-title" class="split">Education</h2><span class="idx" aria-hidden="true">(05)</span></div>
+      <div class="edu">
+        <article class="rv"><time>Sep 2026</time><h3>Engineering Degree in Computer Engineering</h3><p>ESPRIT – Engineering School</p><span>Web and Internet Technologies</span></article>
+        <article class="rv"><time>2020 – 2023</time><h3>Bachelor's Degree in Computer Science</h3><p>ISIMM – Monastir</p><span>Software Engineering and Information Systems</span></article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="split">Contact <em>Me</em></h2>
+      <p class="rv">Let's build something great together.</p>
+      <ul class="meta rv"><li>Open to opportunities</li><li>Remote friendly</li><li>Mahdia, Tunisia</li></ul>
+      <div class="actions rv">
+        <span class="star"><a class="btn primary magnetic" href="mailto:siwarmsellem@gmail.com">Contact Me <svg class="i arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></span>
+        <a class="btn ghost magnetic" href="assets/siwar-msallem-cv-software-engineer.pdf" download="Siwar-MSALLEM-Software-Engineer-CV.pdf">
+          <svg class="i" viewBox="0 0 24 24"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14" /></svg>Download CV</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Siwar M'SALLEM</p>
+    <div>
+      <a href="mailto:siwarmsellem@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/siwarmsellem" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://github.com/siwar224" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="home.js"></script>
+</body>
 </html>

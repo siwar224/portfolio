@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Khidma case study by Siwar M'SALLEM - a Tunisian full-stack marketplace connecting clients with verified home-service professionals."
+    />
+    <title>Khidma Case Study | Siwar M'SALLEM</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css" />
+    <link rel="stylesheet" href="pages.css" />
+  </head>
+  <body class="khedma-case">
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="Back to portfolio home">
+        <span>S</span><span>M</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects" class="active">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button" type="button" id="themeToggle" aria-label="Toggle dark mode">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M12 4V2m0 20v-2m8-8h2M2 12h2m14.36-6.36 1.42-1.42M4.22 19.78l1.42-1.42m12.72 0 1.42 1.42M4.22 4.22l1.42 1.42" />
+            <circle cx="12" cy="12" r="4" />
+          </svg>
+        </button>
+        <a class="button primary small" href="mailto:siwarmsellem@gmail.com">Contact Me</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="case-hero khedma-hero">
+        <div class="case-copy">
+          <a class="back-link" href="all-projects.html">Back to all projects</a>
+          <p class="eyebrow">Khidma <span></span> Marketplace <span></span> Full Stack</p>
+          <h1>Khidma</h1>
+          <p class="role">Trusted Home Services, Simply.</p>
+          <p class="hero-summary">
+            A Tunisian home-services marketplace that helps clients describe a need, compare proposals from verified
+            professionals, and follow the intervention from booking to completion.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#direction">
+              Explore the case study
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+            </a>
+            <a class="button secondary" href="#workflow">View workflow</a>
+          </div>
+        </div>
+        <div class="case-visual khedma-visual">
+          <img src="assets/khedma/landing-page.png" alt="Khidma landing page showing a client connecting with a verified home-service professional" />
+        </div>
+      </section>
+
+      <section class="section case-overview" id="direction" aria-labelledby="direction-title">
+        <div class="section-heading">
+          <h2 id="direction-title">Project Overview</h2>
+          <span></span>
+        </div>
+        <div class="overview-grid">
+          <article>
+            <h3>Problem</h3>
+            <p>Finding a reliable home-service professional can be fragmented, unclear, and difficult to coordinate from the first request to the final intervention.</p>
+          </article>
+          <article>
+            <h3>Solution</h3>
+            <p>Khidma centralizes service discovery, client requests, professional proposals, appointment tracking, notifications, and private conversations.</p>
+          </article>
+          <article>
+            <h3>Engineering Focus</h3>
+            <p>A modular React and Fastify application with role-based access, secure sessions, real-time events, validated APIs, and MongoDB-backed workflows.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <h2 id="workflow-title">Marketplace Workflow</h2>
+          <span></span>
+        </div>
+        <div class="workflow-grid">
+          <article><strong>01</strong><span>Publish a service request</span></article>
+          <article><strong>02</strong><span>Receive professional proposals</span></article>
+          <article><strong>03</strong><span>Select the right professional</span></article>
+          <article><strong>04</strong><span>Confirm and track the appointment</span></article>
+          <article><strong>05</strong><span>Complete the intervention</span></article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <div class="section-heading">
+          <h2 id="features-title">Technical Highlights</h2>
+          <span></span>
+        </div>
+        <div class="overview-grid">
+          <article><h3>Secure access</h3><p>Client, professional, and admin roles with JWT access and refresh tokens, e-mail OTP verification, password reset, and refresh-token revocation.</p></article>
+          <article><h3>Real-time collaboration</h3><p>Persisted notifications with Socket.IO, plus private Stream Chat conversations linked to requests and proposals.</p></article>
+          <article><h3>Privacy by design</h3><p>Exact addresses and personal contact details remain hidden before appointment confirmation, while access is controlled by role and business status.</p></article>
+        </div>
+      </section>
+
+      <section class="section stack-panel khedma-stack" aria-labelledby="stack-title">
+        <div>
+          <h2 id="stack-title">Technical Stack</h2>
+          <p>React, TypeScript, Vite, custom CSS, Fastify, Node.js, MongoDB, Mongoose, Zod, JWT, Bcrypt, Nodemailer/SMTP, Socket.IO, Stream Chat, Swagger/OpenAPI, Vitest, and MongoDB Memory Server.</p>
+        </div>
+        <a class="button primary" href="index.html#contact">Discuss this project</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Siwar M'SALLEM</p>
+      <div>
+        <a href="all-projects.html">Projects</a>
+        <a href="mailto:siwarmsellem@gmail.com">Email</a>
+        <a href="https://github.com/siwar224" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+  </body>
+</html>

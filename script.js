@@ -1,8 +1,36 @@
 const toggle = document.querySelector("#themeToggle");
 const navLinks = [...document.querySelectorAll(".nav-links a")];
+const themeStorageKey = "siwar-portfolio-theme";
+
+const updateThemeToggle = () => {
+  if (!toggle) return;
+
+  const isDark = document.body.classList.contains("dark");
+  toggle.setAttribute("aria-pressed", String(isDark));
+  toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+};
+
+try {
+  if (localStorage.getItem(themeStorageKey) !== "light") {
+    document.body.classList.add("dark");
+  }
+} catch {
+  // Dark is the default theme, matching the home page, when storage is unavailable.
+  document.body.classList.add("dark");
+}
+
+updateThemeToggle();
 
 toggle?.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+  const isDark = document.body.classList.toggle("dark");
+
+  try {
+    localStorage.setItem(themeStorageKey, isDark ? "dark" : "light");
+  } catch {
+    // The theme still works for the current page when storage is unavailable.
+  }
+
+  updateThemeToggle();
 });
 
 const sectionIds = navLinks.map((link) => link.getAttribute("href")).filter((href) => href?.startsWith("#"));

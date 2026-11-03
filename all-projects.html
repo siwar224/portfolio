@@ -9,6 +9,11 @@
     />
     <title>All Projects | Siwar M'SALLEM</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css" />
+    <link rel="stylesheet" href="pages.css" />
   </head>
   <body class="all-projects-page">
     <header class="site-header">
@@ -53,6 +58,23 @@
         </div>
 
         <div class="projects-grid all-projects-grid">
+          <article class="project-card">
+            <div class="project-preview screenshot-preview">
+              <img src="assets/khedma/landing-page.png" alt="Khidma home services marketplace landing page preview" />
+            </div>
+            <div class="project-body">
+              <a class="project-link" href="khedma.html" aria-label="Open Khidma case study">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
+              </a>
+              <h3>Khidma - Home Services Marketplace</h3>
+              <p>Tunisian full-stack marketplace connecting clients with verified professionals through requests, proposals, scheduling, notifications, and private messaging.</p>
+              <div class="tags"><span>React</span><span>TypeScript</span><span>Fastify</span><span>MongoDB</span></div>
+              <div class="project-actions">
+                <a href="khedma.html">View case study</a>
+              </div>
+            </div>
+          </article>
+
           <article class="project-card">
             <div class="project-preview screenshot-preview">
               <img src="assets/elearning/landing-page.png" alt="Zad Ezzaytouni e-learning platform landing page preview" />
@@ -116,19 +138,29 @@
 
         <div class="projects-grid all-projects-grid">
           <article class="project-card">
-            <div class="project-preview preview-ai">
-              <div class="video-window">
-                <span></span>
-                <strong>Find meals.<br />Order faster.</strong>
-              </div>
-            </div>
+            <div class="project-preview screenshot-preview"><img src="assets/specora/specora-overview.png" alt="Specora AI generated project overview" /></div>
             <div class="project-body">
-              <a class="project-link" href="https://github.com/siwar224" target="_blank" rel="noreferrer" aria-label="Open TheMenuFy project on GitHub">
+              <a class="project-link" href="https://github.com/siwar224/Specora-AI" target="_blank" rel="noreferrer" aria-label="Open Specora AI on GitHub">
                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
               </a>
-              <h3>TheMenuFy - AI-Powered Meal Ordering</h3>
-              <p>Mobile food discovery and ordering application using React Native, AI-powered search, and full-stack API services.</p>
-              <div class="tags"><span>React Native</span><span>Node.js</span><span>MongoDB</span><span>AI</span></div>
+              <h3>Specora AI - Idea to Software Specification</h3>
+              <p>Local-first assistant that turns a rough product idea, typed or spoken, into a reviewable specification with traceable requirements, user stories and acceptance criteria. Exports to HTML/PDF.</p>
+              <div class="tags"><span>Python</span><span>FastAPI</span><span>LLM</span><span>Speech-to-text</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview preview-term"><pre><b>✓</b> parse  text · JSON · NDJSON
+<b>✓</b> facts  stats · groups · timeline
+<i>?</i> AI     bounded Groq investigation
+<b>→</b> report Markdown · JSON</pre></div>
+            <div class="project-body">
+              <a class="project-link" href="https://github.com/siwar224/AI_detective-cli" target="_blank" rel="noreferrer" aria-label="Open AI Detective CLI on GitHub">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
+              </a>
+              <h3>AI Detective CLI - Incident Investigation</h3>
+              <p>Turns application logs into evidence-based diagnostic reports. Deterministic analysis is the source of truth; a bounded Groq agent with read-only tools separates facts from hypotheses.</p>
+              <div class="tags"><span>Python</span><span>FastAPI</span><span>Groq</span><span>pytest</span></div>
             </div>
           </article>
 
@@ -152,20 +184,14 @@
           </article>
 
           <article class="project-card">
-            <div class="project-preview preview-learning">
-              <div class="mini-sidebar"></div>
-              <div class="mini-panel">
-                <span></span>
-                <strong>Manage<br />events cleanly</strong>
-              </div>
-            </div>
+            <div class="project-preview screenshot-preview"><img src="assets/cimaseats/seat-selection.png" alt="CiMaSeat interactive seat selection" /></div>
             <div class="project-body">
-              <a class="project-link" href="https://github.com/siwar224" target="_blank" rel="noreferrer" aria-label="Open EcoEvents project on GitHub">
+              <a class="project-link" href="https://github.com/siwar224/CimaSeats" target="_blank" rel="noreferrer" aria-label="Open CiMaSeat on GitHub">
                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
               </a>
-              <h3>EcoEvents - Event Management Platform</h3>
-              <p>Full-stack event management application with role-based workflows, data tables, reusable components, and admin tools.</p>
-              <div class="tags"><span>React</span><span>Express</span><span>MongoDB</span><span>AG Grid</span></div>
+              <h3>CiMaSeat - Cinema Booking</h3>
+              <p>Booking app with an interactive seat map, atomic rejection of occupied seats, and reservation lookup and cancellation, shared by a CLI and a Streamlit UI.</p>
+              <div class="tags"><span>Python</span><span>Streamlit</span><span>OOP</span><span>unittest</span></div>
             </div>
           </article>
         </div>
@@ -181,6 +207,10 @@
       </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script src="script.js"></script>
+    <script src="pages.js"></script>
   </body>
 </html>

@@ -10,7 +10,7 @@ if (existsSync(dist)) {
 
 mkdirSync(dist, { recursive: true });
 
-for (const entry of ["index.html", "all-projects.html", "youdube.html", "elearning.html", "pulsehr.html", "styles.css", "script.js", "assets"]) {
+for (const entry of ["index.html", "all-projects.html", "khedma.html", "youdube.html", "elearning.html", "pulsehr.html", "styles.css", "script.js", "home.css", "home.js", "pages.css", "pages.js", "assets"]) {
   cpSync(join(root, entry), join(dist, entry), { recursive: true });
 }
 
