@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Motion Lab</title>
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css" />
+<style>
+  /* Same tokens as styles.css — colors untouched */
+  :root {
+    --bg:#fbfcfb; --panel:#fff; --soft:#f1f5f3; --ink:#101827; --muted:#53606f; --faint:#7a8794;
+    --line:#dce4e1; --green:#0f7656; --green-dark:#09563f; --green-soft:#e8f5ef; --amber:#d69a2d;
+    --shadow:0 18px 45px rgba(16,24,39,.08); --radius:6px;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  body.dark {
+    --bg:#0c1110; --panel:#111a18; --soft:#17221f; --ink:#edf5f1; --muted:#aebbb6; --faint:#84938d;
+    --line:#24332e; --green:#2bd09a; --green-dark:#17aa7c; --green-soft:#12362b; --shadow:0 18px 45px rgba(0,0,0,.2);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); }
+  a { color:inherit; text-decoration:none; }
+  img { display:block; max-width:100%; }
+
+  header { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between;
+    height:72px; padding:0 clamp(16px,6vw,118px); background:color-mix(in srgb, var(--bg) 88%, transparent);
+    border-bottom:1px solid var(--line); backdrop-filter:blur(18px); }
+  .brand { font-weight:800; color:var(--green); letter-spacing:.02em; }
+  nav { display:flex; gap:28px; font-size:15px; color:var(--muted); }
+  @media (max-width:760px){ nav { display:none; } }
+
+  /* HERO */
+  .hero { position:relative; overflow:hidden; display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center;
+    min-height:calc(100vh - 72px); padding:56px clamp(16px,6vw,118px); isolation:isolate; }
+  .hero-bg { position:absolute; inset:0; z-index:-1; pointer-events:none; }
+  .hero-bg canvas { width:100%; height:100%; display:block; }
+  .eyebrow { color:var(--green); font-weight:700; font-size:14px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 18px; }
+  h1 { font-size:clamp(44px,6.4vw,84px); line-height:1; margin:0 0 18px; letter-spacing:-.03em; }
+  h1 .w { display:inline-block; will-change:filter,transform,opacity; }
+  .role { font-size:clamp(20px,2.2vw,28px); font-weight:700; margin:0 0 10px; }
+  .hero-summary { color:var(--muted); font-size:18px; margin:0 0 34px; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+  .hero-image { border-radius:14px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); }
+  @media (max-width:860px){ .hero { grid-template-columns:1fr; min-height:auto; } }
+
+  .button { display:inline-flex; align-items:center; gap:10px; height:50px; padding:0 22px; border-radius:var(--radius);
+    font-weight:700; font-size:15px; }
+  .button svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .button.primary { background:var(--green); color:#fff; }
+  body.dark .button.primary { color:#06120e; }
+  .button.secondary { border:1px solid var(--line); background:var(--panel); }
+
+  /* React Bits — Star Border (CSS port) */
+  .star-border { position:relative; display:inline-block; border-radius:calc(var(--radius) + 1px); overflow:hidden; padding:1.5px; }
+  .star-border::before, .star-border::after { content:""; position:absolute; width:300%; height:50%; border-radius:50%;
+    background:radial-gradient(circle, var(--star, #7fe3bf), transparent 12%); opacity:.75; z-index:0; }
+  .star-border::after { bottom:-12px; right:-250%; animation:star-bottom 6s linear infinite alternate; }
+  .star-border::before { top:-12px; left:-250%; animation:star-top 6s linear infinite alternate; }
+  .star-border > .button { position:relative; z-index:1; border:1px solid color-mix(in srgb, var(--green) 60%, transparent); }
+  @keyframes star-bottom { 0%{transform:translateX(0);opacity:1} 100%{transform:translateX(-100%);opacity:0} }
+  @keyframes star-top { 0%{transform:translateX(0);opacity:1} 100%{transform:translateX(100%);opacity:0} }
+
+  /* SECTIONS */
+  section.s { padding:96px clamp(16px,6vw,118px); }
+  .heading { display:flex; align-items:center; gap:18px; margin-bottom:36px; }
+  .heading h2 { font-size:clamp(30px,3.4vw,44px); margin:0; letter-spacing:-.02em; }
+  .heading h2 em { color:var(--green); font-style:normal; }
+  .heading .line { flex:0 0 72px; height:3px; background:var(--green); border-radius:3px; transform-origin:left; }
+  .about-grid { display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:start; }
+  .about-profile { display:flex; gap:24px; align-items:flex-start; color:var(--muted); line-height:1.7; }
+  .about-profile img { width:120px; height:120px; object-fit:cover; border-radius:12px; flex:none; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .stats div { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:22px 16px; }
+  .stats strong { display:block; font-size:38px; color:var(--green); font-variant-numeric:tabular-nums; }
+  .stats span { font-size:13px; color:var(--muted); }
+  @media (max-width:860px){ .about-grid { grid-template-columns:1fr; } .about-profile { flex-direction:column; } }
+
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); }
+  .card img { aspect-ratio:16/10; object-fit:cover; width:100%; border-bottom:1px solid var(--line); }
+  .card div { padding:18px; }
+  .card h3 { margin:0 0 8px; font-size:17px; }
+  .card p { margin:0; color:var(--muted); font-size:14px; line-height:1.6; }
+  @media (max-width:860px){ .cards { grid-template-columns:1fr; } }
+
+  .skills { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; }
+  .skill { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px; text-align:center; }
+  .skill strong { display:block; color:var(--green); font-size:18px; }
+  .skill span { font-size:13px; color:var(--muted); }
+  @media (max-width:860px){ .skills { grid-template-columns:repeat(3,1fr); } }
+
+  .contact { margin:0 clamp(16px,6vw,118px) 140px; padding:56px; border-radius:16px; background:var(--green-soft);
+    display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+  .contact h2 { margin:0 0 6px; font-size:36px; } .contact p { margin:0; color:var(--muted); }
+
+  /* Variant D — Aurora blobs */
+  .aurora { position:absolute; inset:-20%; filter:blur(70px); opacity:.55; }
+  body.dark .aurora { opacity:.4; }
+  .aurora i { position:absolute; border-radius:50%; }
+
+  /* Prototype switcher (not part of the design) */
+  .lab { position:fixed; left:50%; bottom:16px; transform:translateX(-50%); z-index:100; display:flex; gap:6px; align-items:center;
+    padding:6px; background:#101827; color:#fff; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.25); font:600 13px/1 Inter,system-ui,sans-serif;
+    max-width:calc(100vw - 32px); overflow-x:auto; }
+  .lab a, .lab button { all:unset; cursor:pointer; padding:9px 12px; border-radius:8px; white-space:nowrap; color:#c9d4cf; }
+  .lab a.on { background:#2bd09a; color:#06120e; }
+  .lab button:hover, .lab a:not(.on):hover { background:#1f2a37; color:#fff; }
+  .lab .sep { width:1px; height:20px; background:#334; }
+  .lab-note { position:fixed; top:84px; right:16px; z-index:100; max-width:280px; background:var(--panel); border:1px solid var(--line);
+    border-radius:10px; padding:12px 14px; font-size:13px; color:var(--muted); box-shadow:var(--shadow); line-height:1.5; }
+  .lab-note b { color:var(--ink); display:block; margin-bottom:4px; }
+  @media (max-width:760px){ .lab-note { display:none; } }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#">SM</a>
+  <nav><a href="#">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+  <a class="button primary" style="height:40px" href="#contact">Contact Me</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-copy">
+      <p class="eyebrow hero-fade">Build · Automate · Scale</p>
+      <h1 id="title">Siwar M'SALLEM</h1>
+      <p class="role hero-fade">Full Stack Software Engineer</p>
+      <p class="hero-summary hero-fade">Scalable full-stack applications with AI and DevOps</p>
+      <div class="hero-actions hero-fade">
+        <span class="star-border">
+          <a class="button primary" href="#contact">Contact Me
+            <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+        </span>
+        <a class="button secondary" href="#projects">View My Work</a>
+      </div>
+    </div>
+    <div class="hero-image hero-fade"><img src="../assets/hero-workspace.png" alt="Developer workspace" /></div>
+  </section>
+
+  <section class="s reveal" id="about">
+    <div class="heading"><h2>About</h2><span class="line"></span></div>
+    <div class="about-grid">
+      <div class="about-profile r-item">
+        <img src="../assets/siwar-profile.png" alt="Portrait of Siwar M'SALLEM" />
+        <p>I am a Full Stack Software Engineer focused on building reliable web applications with React, Node.js,
+          TypeScript, Express.js, MongoDB, and modern DevOps workflows. My work combines clean architecture,
+          responsive interfaces, RESTful APIs, AI-powered services, and deployment automation.</p>
+      </div>
+      <div class="stats">
+        <div class="r-item"><strong data-count="4">4</strong><span>professional experiences</span></div>
+        <div class="r-item"><strong data-count="5" data-suffix="+">5+</strong><span>featured projects</span></div>
+        <div class="r-item"><strong data-count="2026" data-from="2018">2026</strong><span>engineering degree earned</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s reveal" id="projects">
+    <div class="heading"><h2>Featured <em>Projects</em></h2><span class="line"></span></div>
+    <div class="cards">
+      <article class="card r-item"><img src="../assets/khedma/landing-page.png" alt="" /><div><h3>Khidma - Home Services Marketplace</h3><p>Tunisian full-stack marketplace connecting clients with verified professionals through requests, proposals, scheduling, notifications, and private messaging.</p></div></article>
+      <article class="card r-item"><img src="../assets/elearning/landing-page.png" alt="" /><div><h3>Zad Ezzaytouni - E-learning Platform</h3><p>Scalable MERN platform with role-based dashboards, course management, virtual classrooms, notifications, and AI assistance.</p></div></article>
+      <article class="card r-item"><img src="../assets/youdube/landingpage.png" alt="" /><div><h3>YouDube - AI Video Dubbing</h3><p>Multilingual video dubbing platform with upload, transcription, translation, voice synthesis, and final merge workflow.</p></div></article>
+    </div>
+  </section>
+
+  <section class="s reveal" id="skills">
+    <div class="heading"><h2>Technical Skills</h2><span class="line"></span></div>
+    <div class="skills">
+      <div class="skill r-item"><strong>JS</strong><span>JavaScript</span></div><div class="skill r-item"><strong>TS</strong><span>TypeScript</span></div>
+      <div class="skill r-item"><strong>Re</strong><span>React</span></div><div class="skill r-item"><strong>N</strong><span>Next.js</span></div>
+      <div class="skill r-item"><strong>No</strong><span>Node.js</span></div><div class="skill r-item"><strong>Py</strong><span>Python</span></div>
+      <div class="skill r-item"><strong>SQL</strong><span>MySQL</span></div><div class="skill r-item"><strong>DB</strong><span>MongoDB</span></div>
+      <div class="skill r-item"><strong>Do</strong><span>Docker</span></div><div class="skill r-item"><strong>CI</strong><span>GitHub Actions</span></div>
+      <div class="skill r-item"><strong>AWS</strong><span>Cloud</span></div><div class="skill r-item"><strong>Git</strong><span>Git</span></div>
+    </div>
+  </section>
+
+  <section class="contact reveal" id="contact">
+    <div class="r-item"><h2>Contact Me</h2><p>Let's build something great together.</p></div>
+    <span class="star-border r-item"><a class="button primary" href="mailto:siwarmsellem@gmail.com">siwarmsellem@gmail.com</a></span>
+  </section>
+</main>
+
+<div class="lab-note" id="note"></div>
+<div class="lab" id="lab"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const V = params.get("v") || "A";
+const DARK = params.get("dark") === "1";
+const RM = params.get("rm") === "1" || matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (DARK) document.body.classList.add("dark");
+const css = (n) => getComputedStyle(document.body).getPropertyValue(n).trim();
+
+const VARIANTS = {
+  A: { name: "A · Calm Rays", note: "Light Rays from the top centre in your green. Title blurs in word by word. Sections fade up gently. Closest to the brief." },
+  B: { name: "B · Spotlight", note: "Light Rays from the top-right corner that lean a little toward the cursor. Title blurs in letter by letter. Sections come in with a slight blur." },
+  C: { name: "C · Dot Grid", note: "No rays: a quiet dot grid where dots near the cursor turn green. The heading underline draws in on scroll. The most 'engineering' feel." },
+  D: { name: "D · Aurora", note: "Soft green/amber aurora glow drifting slowly behind the hero. Cards stagger in one after another. The warmest and softest option." },
+};
+
+/* ---------- switcher ---------- */
+const link = (o) => { const p = new URLSearchParams({ v: V, dark: DARK ? "1" : "0", rm: params.get("rm") === "1" ? "1" : "0", ...o }); return "?" + p; };
+document.getElementById("lab").innerHTML =
+  Object.entries(VARIANTS).map(([k, v]) => `<a href="${link({ v: k })}" class="${k === V ? "on" : ""}">${v.name}</a>`).join("") +
+  `<span class="sep"></span><a href="${link({ dark: DARK ? "0" : "1" })}">${DARK ? "☀ Light" : "☾ Dark"}</a>` +
+  `<a href="${link({ rm: params.get("rm") === "1" ? "0" : "1" })}" class="${params.get("rm") === "1" ? "on" : ""}">Reduced motion</a>` +
+  `<button onclick="scrollTo(0,0);location.reload()">↺ Replay</button>`;
+document.getElementById("note").innerHTML = `<b>${VARIANTS[V].name}</b>${VARIANTS[V].note}${RM ? "<br><br><b>Reduced motion is on:</b> no smooth scroll, no animations, static background." : ""}`;
+history.scrollRestoration = "manual";
+
+/* ---------- star colour ---------- */
+document.querySelectorAll(".star-border").forEach((el) => el.style.setProperty("--star", DARK ? "#7ff0c6" : "#9fe8cc"));
+if (RM) document.querySelectorAll(".star-border").forEach((el) => el.classList.add("rm"));
+if (RM) { const s = document.createElement("style"); s.textContent = ".star-border::before,.star-border::after{animation:none;opacity:0}"; document.head.append(s); }
+
+/* ---------- Lenis + GSAP ticker ---------- */
+gsap.registerPlugin(ScrollTrigger);
+if (!RM) {
+  const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
+    const t = document.querySelector(a.getAttribute("href")); if (!t) return; e.preventDefault(); lenis.scrollTo(t, { offset: -72 });
+  }));
+}
+
+/* ---------- React Bits — Blur Text (GSAP port) ---------- */
+function blurText(el, by) {
+  const text = el.textContent;
+  el.setAttribute("aria-label", text);
+  const parts = by === "letters" ? [...text] : text.split(" ");
+  el.innerHTML = parts.map((p) => `<span class="w" aria-hidden="true">${p === " " ? "&nbsp;" : p}</span>`).join(by === "letters" ? "" : " ");
+  if (RM) return;
+  gsap.fromTo(el.querySelectorAll(".w"),
+    { filter: "blur(10px)", opacity: 0, y: by === "letters" ? 12 : -18 },
+    { filter: "blur(0px)", opacity: 1, y: 0, duration: by === "letters" ? 0.7 : 0.9, ease: "power3.out",
+      stagger: by === "letters" ? 0.035 : 0.14, delay: 0.15, clearProps: "filter" });
+}
+blurText(document.getElementById("title"), V === "B" || V === "D" ? "letters" : "words");
+if (!RM) gsap.from(".hero-fade", { opacity: 0, y: 14, duration: 0.9, ease: "power2.out", stagger: 0.08, delay: 0.55 });
+
+/* ---------- Section reveals ---------- */
+if (!RM) {
+  document.querySelectorAll(".reveal").forEach((sec) => {
+    const items = sec.querySelectorAll(".r-item");
+    const head = sec.querySelector(".heading");
+    const line = sec.querySelector(".heading .line");
+    const tl = gsap.timeline({ scrollTrigger: { trigger: sec, start: "top 80%", once: true } });
+    if (V === "A") {
+      tl.from(sec, { opacity: 0, y: 28, duration: 0.9, ease: "power2.out" });
+    } else if (V === "B") {
+      tl.from(sec, { opacity: 0, y: 16, filter: "blur(6px)", duration: 1, ease: "power2.out", clearProps: "filter" });
+    } else if (V === "C") {
+      if (head) tl.from(head.querySelector("h2"), { opacity: 0, y: 14, duration: 0.6, ease: "power2.out" });
+      if (line) tl.from(line, { scaleX: 0, duration: 0.7, ease: "power3.inOut" }, "<0.1");
+      tl.from(items, { opacity: 0, y: 14, duration: 0.6, ease: "power2.out", stagger: 0.03 }, "<0.15");
+    } else {
+      if (head) tl.from(head, { opacity: 0, y: 18, duration: 0.7, ease: "power2.out" });
+      tl.from(items, { opacity: 0, y: 24, scale: 0.98, duration: 0.7, ease: "power2.out", stagger: 0.07 }, "<0.1");
+    }
+  });
+}
+
+/* ---------- Count up ---------- */
+document.querySelectorAll("[data-count]").forEach((el) => {
+  const end = +el.dataset.count, from = +(el.dataset.from || 0), suf = el.dataset.suffix || "";
+  if (RM) return;
+  const o = { n: from };
+  el.textContent = from + suf;
+  gsap.to(o, { n: end, duration: end > 100 ? 1.6 : 1.2, ease: "power2.out",
+    scrollTrigger: { trigger: el, start: "top 85%", once: true },
+    onUpdate: () => (el.textContent = Math.round(o.n) + suf) });
+});
+
+/* ---------- Hero backgrounds ---------- */
+const bg = document.getElementById("heroBg");
+const hexRgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+
+function lightRays({ origin, followMouse, spread, length, opacity }) {
+  // Port of React Bits <LightRays> fragment shader, raw WebGL (no React/OGL)
+  const c = document.createElement("canvas"); bg.append(c); c.style.opacity = opacity;
+  const gl = c.getContext("webgl", { premultipliedAlpha: false, alpha: true }); if (!gl) return;
+  const vs = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
+  const fs = `precision highp float;
+  uniform float t; uniform vec2 res,src,dir; uniform vec3 col; uniform float spread,len;
+  float ray(vec2 s,vec2 d,vec2 c,float a,float b,float sp){
+    vec2 v=c-s; vec2 n=normalize(v); float ca=dot(n,d);
+    float da=ca+0.05*sin(t*2.+length(v)*.01)*.2;
+    float sf=pow(max(da,0.),1./max(spread,.001));
+    float dist=length(v); float md=res.x*len;
+    float lf=clamp((md-dist)/md,0.,1.);
+    float ff=clamp((res.x*1.0-dist)/(res.x*1.0),.5,1.);
+    float bs=clamp((.45+.15*sin(da*a+t*sp))+(.3+.2*cos(-da*b+t*sp)),0.,1.);
+    return bs*lf*ff*sf;}
+  void main(){
+    vec2 c=vec2(gl_FragCoord.x,res.y-gl_FragCoord.y);
+    float r=ray(src,dir,c,36.2214,21.11349,1.5*.6)*.5+ray(src,dir,c,22.3991,18.0234,1.1*.6)*.4;
+    float br=1.-(c.y/res.y);
+    r*=.35+br*.65;
+    gl_FragColor=vec4(col,clamp(r,0.,1.));}`;
+  const sh = (type, s) => { const x = gl.createShader(type); gl.shaderSource(x, s); gl.compileShader(x); return x; };
+  const pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(pr); gl.useProgram(pr);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  const U = (n) => gl.getUniformLocation(pr, n);
+  gl.uniform3fv(U("col"), hexRgb(css("--green"))); gl.uniform1f(U("spread"), spread); gl.uniform1f(U("len"), length);
+  const mouse = { x: 0.5, y: 0.3 }, sm = { x: 0.5, y: 0.3 };
+  if (followMouse) addEventListener("mousemove", (e) => { mouse.x = e.clientX / innerWidth; mouse.y = e.clientY / innerHeight; });
+  const size = () => { const d = Math.min(devicePixelRatio, 1.5); c.width = bg.clientWidth * d; c.height = bg.clientHeight * d; gl.viewport(0, 0, c.width, c.height); };
+  size(); addEventListener("resize", size);
+  let visible = true; new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(bg);
+  const draw = (time) => {
+    const W = c.width, H = c.height;
+    const s = origin === "top-right" ? [W * 1.0, -H * 0.05] : [W * 0.5, -H * 0.2];
+    let d = origin === "top-right" ? [-0.55, 0.85] : [0, 1];
+    if (followMouse) { sm.x += (mouse.x - sm.x) * 0.04; sm.y += (mouse.y - sm.y) * 0.04;
+      const tx = sm.x * W - s[0], ty = sm.y * H - s[1], l = Math.hypot(tx, ty);
+      d = [d[0] * 0.8 + (tx / l) * 0.2, d[1] * 0.8 + (ty / l) * 0.2]; const dl = Math.hypot(...d); d = [d[0] / dl, d[1] / dl]; }
+    gl.uniform1f(U("t"), time / 1000); gl.uniform2f(U("res"), W, H); gl.uniform2f(U("src"), ...s); gl.uniform2f(U("dir"), ...d);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
+  };
+  if (RM) return draw(2000);
+  const loop = (time) => { if (visible) draw(time); requestAnimationFrame(loop); }; requestAnimationFrame(loop);
+}
+
+function dotGrid() {
+  // Port of React Bits <DotGrid> idea: calm grid, dots near the cursor tint green
+  const c = document.createElement("canvas"); bg.append(c); const ctx = c.getContext("2d");
+  const gap = 28, base = css("--line"), act = hexRgb(css("--green")), b = hexRgb(base);
+  let W, H, d; const m = { x: -999, y: -999 };
+  const size = () => { d = Math.min(devicePixelRatio, 2); W = bg.clientWidth; H = bg.clientHeight; c.width = W * d; c.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+  size(); addEventListener("resize", size);
+  bg.parentElement.addEventListener("mousemove", (e) => { const r = bg.getBoundingClientRect(); m.x = e.clientX - r.left; m.y = e.clientY - r.top; });
+  bg.parentElement.addEventListener("mouseleave", () => { m.x = m.y = -999; });
+  const draw = (t) => {
+    ctx.clearRect(0, 0, W, H);
+    for (let x = gap / 2; x < W; x += gap) for (let y = gap / 2; y < H; y += gap) {
+      const dist = Math.hypot(x - m.x, y - m.y), k = Math.max(0, 1 - dist / 160);
+      const wave = RM ? 0 : 0.15 * Math.sin(t / 1400 + x * 0.01 + y * 0.012);
+      const fade = Math.min(1, (H - y) / (H * 0.5)) * Math.min(1, x / (W * 0.25) + 0.3);
+      const rgb = b.map((v, i) => Math.round((v + (act[i] - v) * k) * 255));
+      ctx.globalAlpha = Math.max(0, (0.75 + wave + k * 0.5) * fade);
+      ctx.fillStyle = `rgb(${rgb})`; ctx.beginPath(); ctx.arc(x, y, 1.6 + k * 1.6, 0, 7); ctx.fill();
+    }
+  };
+  if (RM) return draw(0);
+  const loop = (t) => { draw(t); requestAnimationFrame(loop); }; requestAnimationFrame(loop);
+}
+
+function aurora() {
+  const a = document.createElement("div"); a.className = "aurora"; bg.append(a);
+  const blobs = [
+    { c: css("--green"), w: 46, l: 50, t: -5, o: 0.55 },
+    { c: css("--green-soft"), w: 55, l: 15, t: 10, o: 1 },
+    { c: css("--amber"), w: 30, l: 72, t: 35, o: 0.35 },
+  ];
+  blobs.forEach((b) => { const i = document.createElement("i");
+    Object.assign(i.style, { background: b.c, width: b.w + "vw", height: b.w * 0.6 + "vw", left: b.l + "%", top: b.t + "%", opacity: b.o }); a.append(i);
+    if (!RM) gsap.to(i, { xPercent: gsap.utils.random(-25, 25), yPercent: gsap.utils.random(-20, 20), scale: gsap.utils.random(0.9, 1.15),
+      duration: gsap.utils.random(9, 14), ease: "sine.inOut", repeat: -1, yoyo: true }); });
+}
+
+if (V === "A") lightRays({ origin: "top-center", followMouse: false, spread: 0.9, length: 1.6, opacity: DARK ? 0.75 : 0.45 });
+if (V === "B") lightRays({ origin: "top-right", followMouse: true, spread: 1.1, length: 2.2, opacity: DARK ? 0.95 : 0.65 });
+if (V === "C") dotGrid();
+if (V === "D") aurora();
+</script>
+</body>
+</html>

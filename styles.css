@@ -1682,3 +1682,32 @@ body.dark .featured-secondary-action {
     flex-wrap: wrap;
   }
 }
+
+/* VELOR case study */
+.velora-hero {
+  background: linear-gradient(90deg, #fbfcfb 0%, #fbfcfb 48%, #f4e8da 100%);
+}
+
+.velora-case .case-copy h1,
+.velora-case .workflow-grid strong {
+  color: #9c5c22;
+}
+
+.velora-visual {
+  overflow: hidden;
+  min-height: 0;
+  border-color: #e3c9a8;
+}
+
+.velora-visual img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+body.dark.velora-case .case-hero {
+  background: linear-gradient(90deg, #0c1110 0%, #0c1110 48%, #2b1d14 100%);
+}
+
+body.dark.velora-case .case-visual {
+  border-color: #5a3d24;
+}
