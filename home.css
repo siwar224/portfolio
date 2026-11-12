@@ -160,10 +160,13 @@ pre.code { margin:0; padding:18px 18px 20px; font:13px/1.75 var(--mono); overflo
   .stats div:nth-child(3) { border-left:0; padding-left:0; } .stats div:nth-child(n+3) { border-top:1px solid var(--line); margin-top:24px; } }
 
 /* PROJECTS — horizontal pinned */
-.projects { padding:140px 0 0; overflow:hidden; }
+.projects { padding:140px 0 0; }
 .projects .sec-head { margin-inline:var(--gutter); }
-.h-track { display:flex; gap:28px; padding:0 var(--gutter) 140px; width:max-content; will-change:transform; }
-.proj { position:relative; width:min(78vw,600px); flex:none; border-radius:24px; overflow:hidden; background:var(--surface); border:1px solid var(--line); display:flex; flex-direction:column; }
+.h-track { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:24px; padding:0 var(--gutter) 140px; }
+.h-track .proj:first-child { grid-column:1 / -1; flex-direction:row; }
+.h-track .proj:first-child .proj-media { flex:1.15; aspect-ratio:auto; min-height:360px; }
+.h-track .proj:first-child .proj-body { flex:1; justify-content:center; padding:36px; }
+.proj { position:relative; min-width:0; border-radius:24px; overflow:hidden; background:var(--surface); border:1px solid var(--line); display:flex; flex-direction:column; }
 .proj-media { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--surface-2); }
 .proj-media img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 1s cubic-bezier(.2,.7,.2,1); }
 .proj:hover .proj-media img { transform:scale(1.04); }
@@ -193,7 +196,8 @@ pre.code { margin:0; padding:18px 18px 20px; font:13px/1.75 var(--mono); overflo
 .flow b { padding:10px 14px; border-radius:12px; background:var(--surface); border:1px solid var(--line-2); font-weight:500; }
 .flow i { color:var(--accent-2); font-style:normal; }
 .view-all { display:inline-flex; align-items:center; gap:10px; font-weight:600; }
-@media (max-width:900px){ .h-track { flex-direction:column; width:auto; } .proj { width:100%; } }
+@media (max-width:900px){ .h-track { grid-template-columns:1fr; } .h-track .proj:first-child { flex-direction:column; }
+  .h-track .proj:first-child .proj-media { aspect-ratio:16/10; min-height:0; } .h-track .proj:first-child .proj-body { padding:26px 28px 28px; } }
 
 /* SKILLS */
 .skill-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }

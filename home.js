@@ -148,13 +148,9 @@ if (!RM) {
       scrollTrigger: { trigger: el, start: "top 90%", once: true } });
   });
 
-  // Projects: horizontal pinned scroll on desktop
-  ScrollTrigger.matchMedia({ "(min-width: 901px)": () => {
-    const track = document.getElementById("hTrack");
-    const dist = () => track.scrollWidth - innerWidth;
-    gsap.to(track, { x: () => -dist(), ease: "none",
-      scrollTrigger: { trigger: "#projects", start: "top top", end: () => "+=" + dist(), pin: true, scrub: .8, invalidateOnRefresh: true } });
-  }});
+  // Projects: cards reveal in a normal grid so every description and link stays reachable
+  ScrollTrigger.batch("#hTrack .proj", { start: "top 90%", once: true,
+    onEnter: (els) => gsap.from(els, { opacity: 0, y: 40, duration: 1, ease: "expo.out", stagger: .08 }) });
 
   // Timeline progress
   gsap.to("#timeline .prog", { scaleY: 1, ease: "none", scrollTrigger: { trigger: "#timeline", start: "top 70%", end: "bottom 60%", scrub: true } });
