@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="VELOR case study by Siwar M'SALLEM - a cinematic scroll-driven coffee brand site with a restaurant operations dashboard, built on Next.js, GSAP, TanStack Query and MSW."
+    />
+    <title>VELOR Case Study | Siwar M'SALLEM</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css" />
+    <link rel="stylesheet" href="pages.css" />
+  </head>
+  <body class="velora-case">
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="Back to portfolio home">
+        <span>S</span><span>M</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects" class="active">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button" type="button" id="themeToggle" aria-label="Toggle dark mode">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M12 4V2m0 20v-2m8-8h2M2 12h2m14.36-6.36 1.42-1.42M4.22 19.78l1.42-1.42m12.72 0 1.42 1.42M4.22 4.22l1.42 1.42" />
+            <circle cx="12" cy="12" r="4" />
+          </svg>
+        </button>
+        <a class="button primary small" href="mailto:siwarmsellem@gmail.com">Contact Me</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="case-hero velora-hero">
+        <div class="case-copy">
+          <a class="back-link" href="all-projects.html">Back to all projects</a>
+          <p class="eyebrow">Frontend <span></span> Motion <span></span> Dashboard</p>
+          <h1>VELOR</h1>
+          <p class="role">Velvet Cold Coffee - brand site and operations dashboard</p>
+          <p class="hero-summary">
+            A cinematic, scroll-driven website for a fictional Paris coffee bar, paired with an admin dashboard
+            for orders, menu and opening hours. Every change made in the dashboard shows up live on the public site,
+            through a typed REST API served by a mock service worker. No backend required.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://velora-rho-lyart.vercel.app/" target="_blank" rel="noreferrer">
+              Visit live site
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+            <a class="button secondary" href="#gallery">View screens</a>
+          </div>
+        </div>
+        <div class="case-visual velora-visual">
+          <img src="assets/velora/hero.jpg" alt="VELOR hero section: Cold, slow, deliberate, next to an iced latte" />
+        </div>
+      </section>
+
+      <section class="section case-overview" aria-labelledby="overview-title">
+        <div class="section-heading">
+          <h2 id="overview-title">Project Overview</h2>
+          <span></span>
+        </div>
+        <div class="overview-grid">
+          <article>
+            <h3>Goal</h3>
+            <p>Build a brand experience that feels like a film, scrubbing a 267-frame video of an iced latte as you scroll, without giving up performance, accessibility or real content in the HTML.</p>
+          </article>
+          <article>
+            <h3>Solution</h3>
+            <p>A Next.js app with two route groups: a GSAP-driven public site and a separate <code>/admin</code> dashboard. The two never share heavy code: the site never loads the API client, and the admin never loads GSAP or the frames.</p>
+          </article>
+          <article>
+            <h3>My Role</h3>
+            <p>Designed and built end to end as a solo frontend project: art direction, scroll choreography, data layer, dashboard UI, accessibility and performance tuning, and Vercel deployment.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section workflow-section" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <h2 id="workflow-title">From Order to Board</h2>
+          <span></span>
+        </div>
+        <div class="workflow-grid">
+          <article><strong>01</strong><span>Guest orders ahead on the site</span></article>
+          <article><strong>02</strong><span>Validated by zod, idempotent POST</span></article>
+          <article><strong>03</strong><span>Lands on the kanban order board</span></article>
+          <article><strong>04</strong><span>Staff drag it through preparation</span></article>
+          <article><strong>05</strong><span>Menu and hours sync back live</span></article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <div class="section-heading">
+          <h2 id="features-title">Technical Highlights</h2>
+          <span></span>
+        </div>
+        <div class="overview-grid">
+          <article><h3>Scroll-scrubbed canvas</h3><p>A pinned canvas draws WebP frames tied 1:1 to scroll position, streamed progressively (30 up front, the rest when the browser is idle). The LCP element is a real <code>&lt;picture&gt;</code> poster, not the canvas.</p></article>
+          <article><h3>Production-grade data layer</h3><p>Typed REST API on MSW v2 with zod as the single source of truth, TanStack Query caching and polling, cross-tab sync via BroadcastChannel, and optimistic updates with rollback and Retry.</p></article>
+          <article><h3>Realistic network</h3><p>300-900 ms latency, occasional failures and timeouts, with a built-in simulator (fast, normal, slow 3G). Idempotency keys make sure a retry or a double click never creates a duplicate order.</p></article>
+          <article><h3>Operations dashboard</h3><p>KPIs and Recharts analytics, a dnd-kit kanban with full keyboard moves, a TanStack Table menu editor with react-hook-form + zod, weekly hours, and a Ctrl+K command palette.</p></article>
+          <article><h3>Accessibility</h3><p>Semantic HTML, keyboard support everywhere including the kanban, polite live regions, 44 px touch targets, and axe WCAG 2.1 AA scans with no violations. Reduced motion stacks the beats as plain sections.</p></article>
+          <article><h3>Performance</h3><p>Lighthouse desktop on the production build: Performance 97-98, Accessibility 100, Best Practices 100, SEO 100. Skeletons reuse the real layout for a CLS of 0.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="gallery" aria-labelledby="gallery-title">
+        <div class="section-heading inline-heading">
+          <div>
+            <h2 id="gallery-title">Selected Screens</h2>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <figure>
+            <img src="assets/velora/scroll-sequence.jpg" alt="Scroll-driven frame sequence of an iced latte splash with the heading Crafted in motion" loading="lazy" />
+            <figcaption>Scroll-scrubbed frame sequence</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/velora/story.jpg" alt="Our Story section with counters for partner farms, roast to cup time and batch size" loading="lazy" />
+            <figcaption>Our Story with animated counters</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/velora/menu.jpg" alt="Menu card with Cold, Espresso and Beans tabs and a photo preview" loading="lazy" />
+            <figcaption>Tabbed menu with photo previews</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/velora/visit.jpg" alt="Visit footer with address, opening hours and a live Open now badge" loading="lazy" />
+            <figcaption>Visit footer with live Open now badge</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/velora/admin-overview.jpg" alt="Dashboard overview with revenue, orders, average ticket, revenue chart and orders by hour" loading="lazy" />
+            <figcaption>Dashboard overview and KPIs</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/velora/admin-orders.jpg" alt="Kanban orders board with New, Preparing, Ready and Picked up columns" loading="lazy" />
+            <figcaption>Kanban orders board</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/velora/admin-menu.jpg" alt="Menu table with photos, categories, prices, stock and availability switches" loading="lazy" />
+            <figcaption>Menu management table</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/velora/command-palette.jpg" alt="Command palette opened with Ctrl+K over the menu page" loading="lazy" />
+            <figcaption>Ctrl+K command palette</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section stack-panel velora-stack" aria-labelledby="stack-title">
+        <div>
+          <h2 id="stack-title">Technical Stack</h2>
+          <p>Next.js 15 (App Router, route groups), React 19, TypeScript strict, Tailwind CSS v4, shadcn/ui, GSAP, ScrollTrigger, SplitText, Lenis, TanStack Query v5, Zustand, zod, MSW v2, dnd-kit, TanStack Table, react-hook-form, Recharts, Playwright + axe-core, Lighthouse, and Vercel.</p>
+        </div>
+        <a class="button primary" href="https://velora-rho-lyart.vercel.app/admin/login" target="_blank" rel="noreferrer">Try the dashboard</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Siwar M'SALLEM</p>
+      <div>
+        <a href="all-projects.html">Projects</a>
+        <a href="mailto:siwarmsellem@gmail.com">Email</a>
+        <a href="https://github.com/siwar224" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+  </body>
+</html>
