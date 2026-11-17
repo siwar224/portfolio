@@ -1,0 +1,50 @@
+name: Portfolio cards from GitHub
+
+# Reads the portfolio agent's knowledge base and proposes a "More Work" card for each new
+# GitHub project it found (same design as the existing cards). Opens a Pull Request for review.
+on:
+  schedule:
+    - cron: "0 9 * * 1" # every Monday at 09:00 UTC, after the agent's knowledge sync
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: auto-cards
+  cancel-in-progress: false
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate cards for new GitHub projects
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/sync-cards.js
+
+      - name: Check the site still builds
+        run: npm run build
+
+      - name: Open or update the review Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: auto-cards
+          delete-branch: true
+          title: "New project cards from GitHub"
+          body-path: scripts/auto-cards-last-run.md
+          commit-message: "feat(projects): add cards for new GitHub projects"
+          add-paths: |
+            all-projects.html
+            assets/**
+            scripts/auto-cards.state.json
+            scripts/auto-cards-last-run.md
+          labels: auto-cards
