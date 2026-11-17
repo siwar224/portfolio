@@ -51,6 +51,7 @@ body.light::after { opacity:.08; mix-blend-mode:multiply; }
 .btn.primary { background:var(--ink); color:var(--bg); }
 .btn.primary:hover { background:var(--accent-2); color:#06120e; }
 .btn.ghost { border:1px solid var(--line-2); color:var(--ink); }
+button.btn { font-family:inherit; cursor:pointer; } button.btn.ghost { background:transparent; }
 .btn.ghost:hover { border-color:var(--ink); }
 .btn .arrow { transition:transform .3s; } .btn:hover .arrow { transform:translateX(4px); }
 
