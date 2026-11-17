@@ -5,3 +5,5 @@ tmp/
 assets/youdube/demo-v5.mp4
 assets/youdube/demo-v5-web.mp4
 assets/elearning/landing-page-demo.mp4
+.claude/launch.json
+.history/
